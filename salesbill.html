@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sales bill</title>
+<style>
+body
+{
+background-image:url("https://img.freepik.com/free-photo/top-view-student-holding-calculator_23-2148721248.jpg?t=st=1712994038~exp=1712997638~hmac=045859fc68233b3fe8454771f841a1b050f4a0308220c2ef9c298e710005faee&w=900");
+width:100%;
+height:100%;
+}
+#name:hover
+{
+background-color:#81A8B1;
+color:black;
+}
+#name
+{
+width:80%;
+height:auto;
+background-color:#E0E6EC;
+opacity:0.8;
+color:#F1580C;
+margin-left:10%;
+margin-top:40px;
+padding:10px;
+border-radius:20px;
+}
+table,tr,td,th
+{
+text-align:left;
+padding:10px;
+}
+fieldset
+{
+border-radius:10px;
+}
+fieldset:hover
+{
+color:black;
+border:3px solid black;
+}
+h1:hover,th:hover,td:hover
+{
+color:red;
+}
+</style>
+</head>
+<body>
+<div id="name">
+<fieldset>
+<table><tr><thead>
+<fieldset><center><h1>SALES BILL CALCULATION</H1></center></thead></tr>
+<tr><th></th>
+<select id="material" >
+<option readonly>choose anyone</option>
+<option value="rice">rice</option>
+<option value="wheat">wheat</option>
+<option value="dhall">dhall</option>
+</select></th></tr>
+<tr><th><label>price:</label></th>
+<td><input type="text" id="price"></td></tr>
+<tr><th><label>quantity:</label></th>
+<td><input type="text" id="quantity"></td></tr>
+<tr><th><label>discount(%):</label></th>
+<td><input type="text" id="discount"></td></tr>
+<tr><th></th><td><center><button onclick="range()">calculate total</button></center></td></tr>
+<tr><th><label>subtotal:</label></th>
+<td><input type="text" id="total"></td></tr>
+<tr><th><label>tax(8%):</label></th>
+<td><input type="text" id="tax"></td></tr>
+<tr><th><label>total cost(after discount and tax):</label></th>
+<td><input type="text" id="cost"></td></tr>
+</div>
+</fieldset>
+<script>
+function range()
+{
+var price;
+const material=document.getElementById("material").value;
+switch(material)
+{
+case "rice":
+       price=32;
+       break;
+case "wheat":
+       price=25;
+       break;
+case "dhall":
+        price=45;
+        break;
+}
+
+{
+var d=parseInt(document.getElementById("quantity").value);
+var mul=d*price;
+var dis;
+if(mul>=1000){
+ dis=mul/20;
+}
+else{
+dis=0;
+}
+document.getElementById("discount").value=dis;
+var total=mul-dis;
+var tax=8;
+var cost=total*tax;
+document.getElementById("price").value=price;
+document.getElementById("total").value=total;
+document.getElementById("tax").value=tax;
+document.getElementById("cost").value=cost;
+}
+}
+</script>
+</body>
+</html>
